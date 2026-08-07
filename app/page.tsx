@@ -761,7 +761,7 @@ function Contact() {
               </div>
             ) : (
               <form
-                name="intake-formulier"
+                name="intake"
                 method="POST"
                 data-netlify="true"
                 onSubmit={async (e) => {
@@ -784,7 +784,7 @@ function Contact() {
                 }}
                 className="rounded-2xl border border-cream/10 bg-espresso p-8 lg:p-10 space-y-6"
               >
-                <input type="hidden" name="form-name" value="intake-formulier" />
+                <input type="hidden" name="form-name" value="intake" />
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="naam" className="block text-sm text-cream/70 mb-2">
