@@ -56,8 +56,13 @@ export const metadata: Metadata = {
     icon: "/icon.png",
     shortcut: "/icon.png",
     apple: "/icon.png",
+  }, 
+ verification: {
+    google: "tsFVSo9FVvWThkW7r3wel4Qt6Jx0HMUrYdfm1F4zoGs",
   },
 };
+
+
 
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
