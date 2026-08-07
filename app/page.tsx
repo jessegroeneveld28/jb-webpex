@@ -420,144 +420,151 @@ function WebsiteScan() {
   return (
     <section id="website-scan" className="bg-espresso border-t border-cream/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
-        <div className="relative rounded-3xl border border-amber/25 bg-gradient-to-br from-espresso-2 via-espresso to-black/60 p-8 sm:p-10 lg:p-14 overflow-hidden">
+        <div className="relative">
           <div
-            className="pointer-events-none absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-amber/10 blur-[100px]"
+            className="absolute -inset-1 sm:-inset-1.5 rounded-3xl bg-amber/30 blur-2xl animate-pulse-glow"
             aria-hidden="true"
           />
 
-          <div className="relative grid lg:grid-cols-5 gap-12 lg:gap-14">
-            <Reveal className="lg:col-span-2">
-              <p className="text-xs sm:text-sm tracking-[0.18em] uppercase text-amber/90 mb-4">
-                Gratis &amp; vrijblijvend
-              </p>
-              <h2 className="font-display font-bold tracking-tight text-3xl sm:text-4xl text-cream leading-tight">
-                Ontvang een gratis website scan
-              </h2>
-              <p className="mt-5 text-zinc-300 text-lg leading-relaxed">
-                Laat je huidige website-link achter. Ik bekijk je site en
-                stuur je binnen 24 uur 3 concrete tips om meer klanten te
-                halen.
-              </p>
-            </Reveal>
+          <div className="relative rounded-3xl border border-amber/30 bg-gradient-to-br from-espresso-2 via-espresso to-black/60 p-8 sm:p-10 lg:p-14 overflow-hidden shadow-[0_0_50px_-12px_rgba(227,162,75,0.4)]">
+            <div
+              className="pointer-events-none absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-amber/10 blur-[100px]"
+              aria-hidden="true"
+            />
 
-            <Reveal delay={0.1} className="lg:col-span-3">
-              {submitted ? (
-                <div className="rounded-2xl border border-amber/30 bg-espresso/60 p-10 text-center">
-                  <p className="font-display text-2xl text-cream mb-2">
-                    Bedankt!
-                  </p>
-                  <p className="text-zinc-300 leading-relaxed">
-                    Je aanvraag is binnen. Je hoort binnen 24 uur van me met
-                    3 concrete tips voor jouw website.
-                  </p>
-                </div>
-              ) : (
-                <form
-                  name="website-scan"
-                  method="POST"
-                  data-netlify="true"
-                  onSubmit={async (e) => {
-                    e.preventDefault();
-                    const form = e.currentTarget;
-                    const params = new URLSearchParams();
-                    new FormData(form).forEach((value, key) => {
-                      params.append(key, value.toString());
-                    });
-                    try {
-                      await fetch("/__forms.html", {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: params.toString(),
+            <div className="relative grid lg:grid-cols-5 gap-12 lg:gap-14">
+              <Reveal className="lg:col-span-2">
+                <p className="text-xs sm:text-sm tracking-[0.18em] uppercase text-amber/90 mb-4">
+                  Gratis &amp; vrijblijvend
+                </p>
+                <h2 className="font-display font-bold tracking-tight text-3xl sm:text-4xl text-cream leading-tight">
+                  Ontvang een gratis website scan
+                </h2>
+                <p className="mt-5 text-zinc-300 text-lg leading-relaxed">
+                  Laat je huidige website-link achter. Ik bekijk je site en
+                  stuur je binnen 24 uur 3 concrete tips om meer klanten te
+                  halen.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.1} className="lg:col-span-3">
+                {submitted ? (
+                  <div className="rounded-2xl border border-amber/30 bg-espresso/60 p-10 text-center">
+                    <p className="font-display text-2xl text-cream mb-2">
+                      Bedankt!
+                    </p>
+                    <p className="text-zinc-300 leading-relaxed">
+                      Je aanvraag is binnen. Je hoort binnen 24 uur van me met
+                      3 concrete tips voor jouw website.
+                    </p>
+                  </div>
+                ) : (
+                  <form
+                    name="website-scan"
+                    method="POST"
+                    data-netlify="true"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      const form = e.currentTarget;
+                      const params = new URLSearchParams();
+                      new FormData(form).forEach((value, key) => {
+                        params.append(key, value.toString());
                       });
-                      setSubmitted(true);
-                    } catch (err) {
-                      console.error(err);
-                    }
-                  }}
-                  className="rounded-2xl border border-cream/10 bg-espresso/60 backdrop-blur p-8 space-y-6"
-                >
-                  <input type="hidden" name="form-name" value="website-scan" />
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="scan-naam"
-                        className="block text-sm text-cream/70 mb-2"
-                      >
-                        Naam
-                      </label>
-                      <input
-                        id="scan-naam"
-                        name="naam"
-                        type="text"
-                        required
-                        className="w-full rounded-lg bg-espresso-2 border border-cream/15 px-4 py-3 text-cream placeholder:text-cream/30 focus:outline-none focus:border-amber transition-colors"
-                        placeholder="Je naam"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="scan-email"
-                        className="block text-sm text-cream/70 mb-2"
-                      >
-                        E-mailadres
-                      </label>
-                      <input
-                        id="scan-email"
-                        name="email"
-                        type="email"
-                        required
-                        className="w-full rounded-lg bg-espresso-2 border border-cream/15 px-4 py-3 text-cream placeholder:text-cream/30 focus:outline-none focus:border-amber transition-colors"
-                        placeholder="jij@jouwzaak.nl"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="scan-website"
-                      className="block text-sm text-cream/70 mb-2"
-                    >
-                      Huidige website (URL)
-                    </label>
-                    <input
-                      id="scan-website"
-                      name="website"
-                      type="url"
-                      required
-                      className="w-full rounded-lg bg-espresso-2 border border-cream/15 px-4 py-3 text-cream placeholder:text-cream/30 focus:outline-none focus:border-amber transition-colors"
-                      placeholder="https://jouwzaak.nl"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="scan-verbeteren"
-                      className="block text-sm text-cream/70 mb-2"
-                    >
-                      Wat wil je verbeteren?{" "}
-                      <span className="text-cream/40">(optioneel)</span>
-                    </label>
-                    <textarea
-                      id="scan-verbeteren"
-                      name="verbeteren"
-                      rows={3}
-                      className="w-full rounded-lg bg-espresso-2 border border-cream/15 px-4 py-3 text-cream placeholder:text-cream/30 focus:outline-none focus:border-amber transition-colors resize-none"
-                      placeholder="Bijv. meer reserveringen, modernere uitstraling, snellere laadtijd..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full sm:w-auto inline-flex justify-center items-center rounded-full bg-amber px-8 py-3.5 text-sm font-semibold text-ink hover:bg-amber-dim transition-colors focus-visible:outline-2 focus-visible:outline-cream"
+                      try {
+                        await fetch("/__forms.html", {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                          },
+                          body: params.toString(),
+                        });
+                        setSubmitted(true);
+                      } catch (err) {
+                        console.error(err);
+                      }
+                    }}
+                    className="rounded-2xl border border-cream/10 bg-espresso/60 backdrop-blur p-8 space-y-6"
                   >
-                    Vraag gratis scan aan
-                  </button>
-                </form>
-              )}
-            </Reveal>
+                    <input type="hidden" name="form-name" value="website-scan" />
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          htmlFor="scan-naam"
+                          className="block text-sm text-cream/70 mb-2"
+                        >
+                          Naam
+                        </label>
+                        <input
+                          id="scan-naam"
+                          name="naam"
+                          type="text"
+                          required
+                          className="w-full rounded-lg bg-espresso-2 border border-cream/15 px-4 py-3 text-cream placeholder:text-cream/30 focus:outline-none focus:border-amber transition-colors"
+                          placeholder="Je naam"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="scan-email"
+                          className="block text-sm text-cream/70 mb-2"
+                        >
+                          E-mailadres
+                        </label>
+                        <input
+                          id="scan-email"
+                          name="email"
+                          type="email"
+                          required
+                          className="w-full rounded-lg bg-espresso-2 border border-cream/15 px-4 py-3 text-cream placeholder:text-cream/30 focus:outline-none focus:border-amber transition-colors"
+                          placeholder="jij@jouwzaak.nl"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="scan-website"
+                        className="block text-sm text-cream/70 mb-2"
+                      >
+                        Huidige website (URL)
+                      </label>
+                      <input
+                        id="scan-website"
+                        name="website"
+                        type="url"
+                        required
+                        className="w-full rounded-lg bg-espresso-2 border border-cream/15 px-4 py-3 text-cream placeholder:text-cream/30 focus:outline-none focus:border-amber transition-colors"
+                        placeholder="https://jouwzaak.nl"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="scan-verbeteren"
+                        className="block text-sm text-cream/70 mb-2"
+                      >
+                        Wat wil je verbeteren?{" "}
+                        <span className="text-cream/40">(optioneel)</span>
+                      </label>
+                      <textarea
+                        id="scan-verbeteren"
+                        name="verbeteren"
+                        rows={3}
+                        className="w-full rounded-lg bg-espresso-2 border border-cream/15 px-4 py-3 text-cream placeholder:text-cream/30 focus:outline-none focus:border-amber transition-colors resize-none"
+                        placeholder="Bijv. meer reserveringen, modernere uitstraling, snellere laadtijd..."
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full sm:w-auto inline-flex justify-center items-center rounded-full bg-amber px-8 py-3.5 text-sm font-semibold text-ink hover:bg-amber-dim transition-colors focus-visible:outline-2 focus-visible:outline-cream"
+                    >
+                      Vraag gratis scan aan
+                    </button>
+                  </form>
+                )}
+              </Reveal>
+            </div>
           </div>
         </div>
       </div>
