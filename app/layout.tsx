@@ -25,7 +25,12 @@ export const metadata: Metadata = {
   title: "JB WebPex — Websites voor horeca",
   description:
     "JB WebPex bouwt snelle, mobielvriendelijke websites voor restaurants, cafés en bistro's door heel Nederland. Digitale menukaart, sfeerbeelden en reserveringen — live binnen twee weken.",
-};
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
+  };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
