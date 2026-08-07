@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify Forms detection</title>
+  </head>
+  <body>
+    <!--
+      This file exists purely so Netlify's build bot can detect the form
+      at deploy time (required since @netlify/plugin-nextjs v5 no longer
+      statically prerenders the React-rendered contact form in app/page.tsx).
+      It is never linked to or shown to visitors; the real form is submitted
+      via fetch("/__forms.html", ...) from the React component.
+    -->
+    <form name="intake-formulier" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="intake-formulier" />
+      <input type="text" name="naam" />
+      <input type="text" name="zaak" />
+      <input type="email" name="email" />
+      <select name="pakket">
+        <option>Horeca Basis &mdash; &euro;520 (zomerdeal)</option>
+        <option>Horeca Pro &mdash; &euro;720 (zomerdeal)</option>
+        <option>Weet ik nog niet</option>
+      </select>
+      <textarea name="bericht"></textarea>
+    </form>
+  </body>
+</html>
