@@ -186,7 +186,7 @@ function SummerDealCard() {
 
         <ul className="mt-6 space-y-2">
           {[
-            "Binnen 7 dagen online",
+            "Binnen 14 dagen online",
             "Volledig mobiel geoptimaliseerd",
             "Geen verborgen kosten",
           ].map((item) => (
