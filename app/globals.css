@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-espresso: #221a15;
+  --color-espresso-2: #2e241c;
+  --color-espresso-3: #3a2c21;
+  --color-cream: #f6efe3;
+  --color-parchment: #fbf6ec;
+  --color-amber: #e3a24b;
+  --color-amber-dim: #c98a3a;
+  --color-wine: #7c2a2a;
+  --color-wine-light: #9a3838;
+  --color-ink: #241b15;
+  --color-taupe: #a8977f;
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.texture-linen {
+  background-image: radial-gradient(rgba(246, 239, 227, 0.06) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.75; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes section-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-enter {
+  animation: section-enter 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
 }
