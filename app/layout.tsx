@@ -22,15 +22,43 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JB WebPex — Websites voor horeca",
+  metadataBase: new URL("https://jbwebpex.com"),
+  title: {
+    default: "JB WebPex | Betaalbare Websites voor de Horeca",
+    template: "%s | JB WebPex",
+  },
   description:
-    "JB WebPex bouwt snelle, mobielvriendelijke websites voor restaurants, cafés en bistro's door heel Nederland. Digitale menukaart, sfeerbeelden en reserveringen — live binnen twee weken.",
+    "JB WebPex bouwt snelle, professionele en mobielvriendelijke websites voor horecazaken. Verhoog je online zichtbaarheid en krijg meer gasten over de vloer.",
+  keywords: [
+    "Horeca website laten maken",
+    "Webdesign horeca",
+    "Website restaurant",
+    "JB WebPex",
+    "Webdesign West-Friesland",
+  ],
+  openGraph: {
+    title: "JB WebPex | Betaalbare Websites voor de Horeca",
+    description:
+      "Snelle en professionele websites voor restaurants, cafés en horecazaken.",
+    url: "https://jbwebpex.com",
+    siteName: "JB WebPex",
+    images: [
+      {
+        url: "/icon.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "nl_NL",
+    type: "website",
+  },
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
     apple: "/icon.png",
   },
-  };
+};
+
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
